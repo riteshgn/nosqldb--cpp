@@ -1,0 +1,100 @@
+
+  <shard name="The Titans">
+    <record>
+      <key>
+        kronos
+      </key>
+      <value>
+        <metadata>
+          <name>
+            Kronos
+          </name>
+          <description>
+            Youngest Titan
+          </description>
+          <datetime>
+            Thu Feb  8 19:32:34 2018
+          </datetime>
+          <relationships>
+            <childkey>
+              zeus
+            </childkey>
+          </relationships>
+        </metadata>
+        <payload>
+          Lives at Mount Othrys
+        </payload>
+      </value>
+    </record>
+    <record>
+      <key>
+        zeus
+      </key>
+      <value>
+        <metadata>
+          <name>
+            Zeus
+          </name>
+          <description>
+            King of Gods
+          </description>
+          <datetime>
+            Thu Feb  8 19:32:34 2018
+          </datetime>
+          <relationships>
+            <childkey>
+              apollo
+            </childkey>
+            <childkey>
+              artemis
+            </childkey>
+          </relationships>
+        </metadata>
+        <payload>
+          Lives at Mount Olympus
+        </payload>
+      </value>
+    </record>
+    <record>
+      <key>
+        apollo
+      </key>
+      <value>
+        <metadata>
+          <name>
+            Apollo
+          </name>
+          <description>
+            God of Sun
+          </description>
+          <datetime>
+            Thu Feb  8 19:32:34 2018
+          </datetime>
+        </metadata>
+        <payload>
+          Also lives at Mount Olympus
+        </payload>
+      </value>
+    </record>
+    <record>
+      <key>
+        artemis
+      </key>
+      <value>
+        <metadata>
+          <name>
+            Artemis
+          </name>
+          <description>
+            Goddess of the Hunt
+          </description>
+          <datetime>
+            Thu Feb  8 19:32:34 2018
+          </datetime>
+        </metadata>
+        <payload>
+          Also lives at Mount Olympus
+        </payload>
+      </value>
+    </record>
+  </shard>
