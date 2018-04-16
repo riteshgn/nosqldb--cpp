@@ -1,7 +1,7 @@
 #pragma once
 ///////////////////////////////////////////////////////////////////////
 // DbCore.h - Implements NoSql database prototype                    //
-// ver 1.3                                                           //
+// ver 1.4                                                           //
 // Language:    C++, Visual Studio 2017                              //
 // Application: NoSqlDb, CSE687 - Object Oriented Design             //
 // Author:      Ritesh Nair                                          //
@@ -32,6 +32,8 @@
 *
 * Maintenance History:
 * --------------------
+* ver 1.4 : 15 Apr 2018
+* - Moved implementation of DbElementMetadata to DbCore.cpp file
 * ver 1.3 : 4 Feb 2018
 * - added implementation for requirements 3 and 4
 *   i.e. addition/removal of key/values and editing of values
@@ -292,24 +294,6 @@ namespace NoSqlDb
         return true;
     }
 
-    //----< adds a child key to the child relationships of an element in db >-----
-    /*
-    *  - Adds a child relationship
-    *  - This is an idempotent function 
-    *    i.e if relationship with a child key has already been added, calling this 
-    *    function again with the same child key will have no effect. 
-    *  - TODO: 
-    *    1. Check if child element actually exists in database??
-    */
-    DbElementMetadata& DbElementMetadata::addRelationship(const Key& childKey)
-    {
-        Children::iterator found = std::find(children_.begin(), children_.end(), childKey);
-        if (found == children_.end())
-            children_.push_back(childKey);
-
-        return *this;
-    }
-
     //----< removes a value from db with key >----------------------------
     /*
     *  - Erases a key and thereby its corresponding value from the database.
@@ -332,26 +316,6 @@ namespace NoSqlDb
                 return false;
         }
         return (dbStore_.erase(key) == 1);
-    }
-
-    //----< removes a child key from the child relationships of an element in db >-----
-    /*
-    *  - Scans the child relationships of the specified db key and remove the 
-    *    supplied child key from its relationships.
-    *  - Returns a true if the operation was successfull; false otherwise.
-    */
-    DbElementMetadata& DbElementMetadata::removeRelationship(const Key& childKey)
-    {
-        // using the erase-remove idiom to efficiently remove the key
-        // here std::remove will 
-        //     - re-order the vector by pushing the matching key(s) to the end of the vector
-        //     - returning an iterator to the end of the non-matching list
-        // and the erase function of the vector "children_" will remove the matched keys
-        // source: https://stackoverflow.com/a/3385251
-        // more info: https://en.wikipedia.org/wiki/Erase%E2%80%93remove_idiom
-
-        children_.erase(std::remove(children_.begin(), children_.end(), childKey), children_.end());
-        return *this;
     }
 
     //----< truncates the db >----------------------------

@@ -1,2 +1,4 @@
-cd Debug
-Test.exe
+cls
+pushd Debug
+TestExecutive.exe
+popd
