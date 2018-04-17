@@ -1,7 +1,7 @@
 #pragma once
 /////////////////////////////////////////////////////////////////////////////////
 // RepoPayload.h - Implements payload type for the Project#2 repository        //
-// ver 1.0                                                                     //
+// ver 1.1                                                                     //
 // Language:    C++, Visual Studio 2017                                        //
 // Application: NoSqlDb, CSE687 - Object Oriented Design                       //
 // Author:      Ritesh Nair (rgnair@syr.edu)                                   //
@@ -19,12 +19,16 @@
 *
 * Maintenance History:
 * --------------------
+* ver 1.1 : 16 Apr 2018
+* - implements IPayload interface so that it is comptible for use with DbCore
 * ver 1.0 : 08 Feb 2018
 * - first release
 */
 
 #ifndef REPO_PAYLOAD_H
 #define REPO_PAYLOAD_H
+
+#include "IPayload.h"
 
 #include <iostream>
 #include <iterator>
@@ -40,7 +44,7 @@ namespace Repository {
     //   list of categories for the file which will be stored in the 
     //   database.
 
-    class RepoPayload {
+    class RepoPayload : public NoSqlDb::IPayload<RepoPayload> {
     public:
         using FilePath = std::string;
         using Category = std::string;
@@ -54,6 +58,11 @@ namespace Repository {
         Categories categories() const { return categories_; }
         void categories(Categories categories) { categories_ = categories; }
         void addCategory(Category category) { categories_.push_back(category); }
+
+        virtual std::string toString() override { return toString(); }
+
+        virtual NoSqlDb::IPayload<RepoPayload>::Sptr toXmlElement() override;
+        static RepoPayload fromXmlElement(NoSqlDb::IPayload<RepoPayload>::Sptr pPayloadElem);
 
         friend std::ostream& operator<<(std::ostream& os, const RepoPayload& payload);
 
@@ -99,27 +108,6 @@ namespace Repository {
 
         return output.str();
 
-    }
-
-    //----< serializes the payload for writing to an output stream >---------------------
-
-    std::ostream& Repository::operator<<(std::ostream& outputStream, const RepoPayload& payload)
-    {
-        return outputStream << payload.toString();
-    }
-
-    //----< stringifies the payload >---------------------
-
-    std::string RepoPayload::toString() const
-    {
-        return "FilePath: [" + filePath() + "], Categories: [" + stringifyCategories() + "]";
-    }
-
-    //----< stringifies the categories >---------------------
-
-    std::string RepoPayload::stringifyCategories() const
-    {
-        return toCommaSeparatedString<Category>(categories_);
     }
 
 } // -- !ns::Repository

@@ -1,7 +1,7 @@
 
                                       CodeAnalysis - Version 1.4
     ==============================================================================================
-     Mon Apr 16 09:02:25 2018
+     Mon Apr 16 20:43:46 2018
      Path: "C:\workspaces\temp\ood-nosqldb"
      Args: *.h, *.cpp, *.cs, /v, /m, /r, /f
                                                                                
@@ -10,7 +10,7 @@
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
-                             namespace                   Global Namespace       1       1     727
+                             namespace                   Global Namespace       1       1     755
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
@@ -126,44 +126,67 @@
                 DbCore.cpp    function                                         59      12       1
                 DbCore.cpp    function                                         79       6       1
                 DbCore.cpp    function                                         89      30       1
-                DbCore.cpp    function                                        123       3       1
-                DbCore.cpp    function                                        132      49       1
-                DbCore.cpp    function                                        185       9       1
-                DbCore.cpp    function                                        198       8       1
-                DbCore.cpp    function                                        210      47       5
-                DbCore.cpp    function                                        228       4       1
-                DbCore.cpp    function                                        233       4       1
-                DbCore.cpp    function                                        238       4       1
-                DbCore.cpp    function                                        243       4       1
-                DbCore.cpp    function                                        260      33       1
-                DbCore.cpp    function                                        295      18       1
-                DbCore.cpp    function                                        315      42       3
-                DbCore.cpp    function                                        323       4       1
-                DbCore.cpp    function                                        329       4       1
-                DbCore.cpp    function                                        361      46       2
-                DbCore.cpp    function                                        392       4       1
-                DbCore.cpp    function                                        411      39       1
-                DbCore.cpp    function                                        454      49       4
-                DbCore.cpp    function                                        461       4       1
-                DbCore.cpp    function                                        474       4       1
-                DbCore.cpp    function                                        489       4       1
-                DbCore.cpp    function                                        507      37       3
-                DbCore.cpp    function                                        513       4       1
-                DbCore.cpp    function                                        531       4       1
-                DbCore.cpp    function                                        548      32       3
-                DbCore.cpp    function                                        562       4       1
-                DbCore.cpp    function                                        568       4       1
-                DbCore.cpp    function                                        584      37       4
-                DbCore.cpp    function                                        590       4       1
-                DbCore.cpp    function                                        603       4       1
-                DbCore.cpp    function                                        609       4       1
-                DbCore.cpp    function                                        629      25       1
+                DbCore.cpp    function                                        125      49       1
+                DbCore.cpp    function                                        178       9       1
+                DbCore.cpp    function                                        191       8       1
+                DbCore.cpp    function                                        203      47       5
+                DbCore.cpp    function                                        221       4       1
+                DbCore.cpp    function                                        226       4       1
+                DbCore.cpp    function                                        231       4       1
+                DbCore.cpp    function                                        236       4       1
+                DbCore.cpp    function                                        253      33       1
+                DbCore.cpp    function                                        288      18       1
+                DbCore.cpp    function                                        308      42       3
+                DbCore.cpp    function                                        316       4       1
+                DbCore.cpp    function                                        322       4       1
+                DbCore.cpp    function                                        354      46       2
+                DbCore.cpp    function                                        385       4       1
+                DbCore.cpp    function                                        404      39       1
+                DbCore.cpp    function                                        447      49       4
+                DbCore.cpp    function                                        454       4       1
+                DbCore.cpp    function                                        467       4       1
+                DbCore.cpp    function                                        482       4       1
+                DbCore.cpp    function                                        500      37       3
+                DbCore.cpp    function                                        506       4       1
+                DbCore.cpp    function                                        524       4       1
+                DbCore.cpp    function                                        541      32       3
+                DbCore.cpp    function                                        555       4       1
+                DbCore.cpp    function                                        561       4       1
+                DbCore.cpp    function                                        577      37       4
+                DbCore.cpp    function                                        583       4       1
+                DbCore.cpp    function                                        596       4       1
+                DbCore.cpp    function                                        602       4       1
+                DbCore.cpp    function                                        622      25       1
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
-        DbCoreTestHelper.h   namespace                       NoSqlDbTests      38      43       5
-        DbCoreTestHelper.h       class                       DbTestHelper      43      14       4
-        DbCoreTestHelper.h    function                 showInitialDbState      62      17       3
+        DbCoreTestHelper.h   namespace                       NoSqlDbTests      39      43       5
+        DbCoreTestHelper.h       class                       DbTestHelper      44      14       4
+        DbCoreTestHelper.h    function                 showInitialDbState      63      17       3
+
+                 file name        type                               name    line    size    cplx
+    -----------------------  ----------  ---------------------------------  ------  ------  ------
+            DbPayloads.cpp    function                       toXmlElement      50      14       2
+            DbPayloads.cpp    function                     fromXmlElement      66      21       5
+            DbPayloads.cpp    function                           toString      98       3       1
+            DbPayloads.cpp    function                stringifyCategories     105       3       1
+            DbPayloads.cpp    function                       toXmlElement      33       3       1
+            DbPayloads.cpp    function                     fromXmlElement      38      10       3
+            DbPayloads.cpp    function                         operator()     180      47       2
+            DbPayloads.cpp    function                         operator<<      91       3       1
+            DbPayloads.cpp       class                     CategoryHeader     112       3       3
+            DbPayloads.cpp    function                         operator()     168       9       2
+            DbPayloads.cpp    function                  _populateTestData     119      47       5
+            DbPayloads.cpp    function                         categories     128       1       1
+            DbPayloads.cpp    function                         categories     139       1       1
+            DbPayloads.cpp    function                         categories     149       1       1
+            DbPayloads.cpp    function                         categories     159       1       1
+            DbPayloads.cpp    function                               main     236      17       1
+
+                 file name        type                               name    line    size    cplx
+    -----------------------  ----------  ---------------------------------  ------  ------  ------
+                IPayload.h   namespace                            NoSqlDb      10      12       2
+                IPayload.h       class                           IPayload      13       8       1
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
@@ -185,17 +208,23 @@
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
-           Persistence.cpp    function                                         42      25       1
-           Persistence.cpp    function                                         71      48       4
-           Persistence.cpp    function                                         87       4       1
-           Persistence.cpp    function                                         93       4       1
-           Persistence.cpp    function                                        106       4       1
-           Persistence.cpp    function                                        123      30       1
-           Persistence.cpp    function                                        155      35       1
-           Persistence.cpp    function                                        192      29       1
-           Persistence.cpp    function                                        223      17       1
-           Persistence.cpp    function                                        242      17       1
-           Persistence.cpp    function                                        267      13       1
+           Persistence.cpp    function                                         45      25       1
+           Persistence.cpp    function                                         74      48       4
+           Persistence.cpp    function                                         90       4       1
+           Persistence.cpp    function                                         96       4       1
+           Persistence.cpp    function                                        109       4       1
+           Persistence.cpp    function                                        126      38       5
+           Persistence.cpp    function                                        134       1       1
+           Persistence.cpp    function                                        141       1       1
+           Persistence.cpp    function                                        148       1       1
+           Persistence.cpp    function                                        155       1       1
+           Persistence.cpp    function                                        166      42       3
+           Persistence.cpp    function                                        198       1       1
+           Persistence.cpp    function                                        204       1       1
+           Persistence.cpp    function                                        210      28       1
+           Persistence.cpp    function                                        240      17       1
+           Persistence.cpp    function                                        259      17       1
+           Persistence.cpp    function                                        284      13       1
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
@@ -241,53 +270,51 @@
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
-                 Query.cpp    function                                         53      42       5
-                 Query.cpp    function                                         60       4       1
-                 Query.cpp    function                                         72       4       1
-                 Query.cpp    function                                         84       4       1
-                 Query.cpp    function                                         97      42       4
-                 Query.cpp    function                                        104       4       1
-                 Query.cpp    function                                        116       4       1
-                 Query.cpp    function                                        128       4       1
-                 Query.cpp    function                                        141      15       2
-                 Query.cpp    function                                        149       4       1
-                 Query.cpp    function                                        160      41       3
-                 Query.cpp    function                                        172       4       1
-                 Query.cpp    function                                        189       4       1
-                 Query.cpp    function                                        203      35       3
-                 Query.cpp    function                                        221       4       1
-                 Query.cpp    function                                        227       4       1
-                 Query.cpp    function                                        240      15       2
-                 Query.cpp    function                                        248       4       1
-                 Query.cpp    function                                        263       9       1
+                 Query.cpp    function                                         54      42       5
+                 Query.cpp    function                                         61       4       1
+                 Query.cpp    function                                         73       4       1
+                 Query.cpp    function                                         85       4       1
+                 Query.cpp    function                                         98      42       4
+                 Query.cpp    function                                        105       4       1
+                 Query.cpp    function                                        117       4       1
+                 Query.cpp    function                                        129       4       1
+                 Query.cpp    function                                        142      15       2
+                 Query.cpp    function                                        150       4       1
+                 Query.cpp    function                                        161      41       3
+                 Query.cpp    function                                        173       4       1
+                 Query.cpp    function                                        190       4       1
+                 Query.cpp    function                                        204      35       3
+                 Query.cpp    function                                        222       4       1
+                 Query.cpp    function                                        228       4       1
+                 Query.cpp    function                                        241      15       2
+                 Query.cpp    function                                        249       4       1
+                 Query.cpp    function                                        264       9       1
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
-             RepoPayload.h   namespace                         Repository      35      90      14
-             RepoPayload.h       class                        RepoPayload      43      24      10
-             RepoPayload.h    function                           filePath      48       2       1
-             RepoPayload.h    function                           filePath      49       2       1
+             RepoPayload.h   namespace                         Repository      37      74      21
+             RepoPayload.h       class                        RepoPayload      45      29      18
              RepoPayload.h    function                           filePath      50       2       1
-             RepoPayload.h    function                         categories      52       2       1
-             RepoPayload.h    function                         categories      53       2       1
+             RepoPayload.h    function                           filePath      51       2       1
+             RepoPayload.h    function                           filePath      52       2       1
              RepoPayload.h    function                         categories      54       2       1
-             RepoPayload.h    function                        addCategory      55       2       1
-             RepoPayload.h    function                           toString     114       3       1
-             RepoPayload.h    function                stringifyCategories     121       3       1
-             RepoPayload.h    function             toCommaSeparatedString      75      28       2
-             RepoPayload.h    function                         operator<<     107       3       1
+             RepoPayload.h    function                         categories      55       2       1
+             RepoPayload.h    function                         categories      56       2       1
+             RepoPayload.h    function                        addCategory      57       2       1
+             RepoPayload.h    function                           toString      59       2       1
+             RepoPayload.h    function             toCommaSeparatedString      82      28       2
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
-           RepoPayload.cpp    function                         operator()      96      47       2
-           RepoPayload.cpp       class                     CategoryHeader      28       3       3
-           RepoPayload.cpp    function                         operator()      84       9       2
-           RepoPayload.cpp    function                  _populateTestData      35      47       5
-           RepoPayload.cpp    function                         categories      44       1       1
-           RepoPayload.cpp    function                         categories      55       1       1
-           RepoPayload.cpp    function                         categories      65       1       1
-           RepoPayload.cpp    function                         categories      75       1       1
-           RepoPayload.cpp    function                               main     152       9       1
+           StringPayload.h   namespace                            NoSqlDb       8      25      13
+           StringPayload.h       class                      StringPayload      10      22      12
+           StringPayload.h    function                      StringPayload      11       2       1
+           StringPayload.h    function                      StringPayload      12       2       1
+           StringPayload.h    function                              value      14       2       1
+           StringPayload.h    function                              value      15       2       1
+           StringPayload.h    function                              value      16       2       1
+           StringPayload.h    function                           toString      18       2       1
+           StringPayload.h    function                         operator<<      25       2       1
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
@@ -404,11 +431,11 @@
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
-               TestQuery.h   namespace                       NoSqlDbTests      33      25       5
-               TestQuery.h       class                              test6      40       8       2
-               TestQuery.h    function                              test6      41       2       1
-               TestQuery.h       class                              test7      48       8       2
-               TestQuery.h    function                              test7      49       2       1
+               TestQuery.h   namespace                       NoSqlDbTests      34      25       5
+               TestQuery.h       class                              test6      41       8       2
+               TestQuery.h    function                              test6      42       2       1
+               TestQuery.h       class                              test7      49       8       2
+               TestQuery.h    function                              test7      50       2       1
 
                  file name        type                               name    line    size    cplx
     -----------------------  ----------  ---------------------------------  ------  ------  ------
@@ -707,5 +734,5 @@
                 std :: string testName ; 
 
 
-    searched   168 dirs
-   processed    42 files
+    searched   186 dirs
+   processed    44 files

@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////
 // RepoPayload.cpp - Implements the persistence APIs                 //
-// ver 1.1                                                           //
+// ver 1.2                                                           //
 // Language:    C++, Visual Studio 2017                              //
 // Application: NoSqlDb, CSE687 - Object Oriented Design             //
 // Author:      Ritesh Nair (rgnair@syr.edu)                         //
@@ -9,18 +9,111 @@
 /*
 * Maintenance History:
 * --------------------
+* ver 1.2 : 15 Apr 2018
+* - Added implementations for the StringPayload and RepoPayload classes
 * ver 1.1 : 15 Apr 2018
 * - Added tests
 * ver 1.0 : 09 Feb 2018
 * - first release
 */
 
-#include "RepoPayload.h"
-#include "../Query/Query.h"
 #include "TestRepoPayload.h"
 #include "../DbCore/DbCoreTestHelper.h"
+#include "RepoPayload.h"
+#include "StringPayload.h"
+#include "../Query/Query.h"
+
+#include <iostream>
 
 using namespace NoSqlDbTests;
+using namespace NoSqlDb;
+using namespace XmlProcessing;
+using namespace Repository;
+
+//----< converts payload to an xml element >---------------------
+
+IPayload<StringPayload>::Sptr StringPayload::toXmlElement() 
+{
+    return makeTaggedElement("payload", toString());
+}
+
+//----< constructs payload from an xml element >---------------------
+
+StringPayload StringPayload::fromXmlElement(IPayload<StringPayload>::Sptr pPayloadElem)
+{
+    if (pPayloadElem->children().size() > 0)
+    {
+        return StringPayload(pPayloadElem->children()[0]->value());
+    }
+    else
+    {
+        return StringPayload("");
+    }
+}
+
+//----< converts payload to an xml element >---------------------
+
+IPayload<RepoPayload>::Sptr RepoPayload::toXmlElement()
+{
+    IPayload<RepoPayload>::Sptr pPayload = makeTaggedElement("payload");
+
+    pPayload->addChild(makeTaggedElement("filepath", filePath_));
+
+    IPayload<RepoPayload>::Sptr pCategories = makeTaggedElement("categories");
+    for (Category category : categories_)
+    {
+        pCategories->addChild(makeTaggedElement("category", category));
+    }
+    pPayload->addChild(pCategories);
+
+    return pPayload;
+}
+
+//----< constructs payload from an xml element >---------------------
+
+RepoPayload RepoPayload::fromXmlElement(IPayload<RepoPayload>::Sptr pPayloadElem)
+{
+    RepoPayload payload;
+
+    for (auto pValueChild : pPayloadElem->children())
+    {
+        if (pValueChild->tag() == "filepath"
+            && pValueChild->children().size() > 0)
+        {
+            payload.filePath(pValueChild->children()[0]->value());
+        }
+        else if (pValueChild->tag() == "categories")
+        {
+            for (auto pCategory : pValueChild->children())
+            {
+                payload.categories().push_back(pCategory->children()[0]->value());
+            }
+        }
+    }
+
+    return payload;
+}
+
+//----< serializes the payload for writing to an output stream >---------------------
+
+std::ostream& Repository::operator<<(std::ostream& outputStream, const RepoPayload& payload)
+{
+    return outputStream << payload.toString();
+}
+
+//----< stringifies the payload >---------------------
+
+std::string RepoPayload::toString() const
+{
+    return "FilePath: [" + filePath() + "], Categories: [" + stringifyCategories() + "]";
+}
+
+//----< stringifies the categories >---------------------
+
+std::string RepoPayload::stringifyCategories() const
+{
+    return toCommaSeparatedString<Category>(categories_);
+}
 
 // test functions
 

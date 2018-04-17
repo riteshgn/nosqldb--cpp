@@ -1,7 +1,7 @@
 #pragma once
 ///////////////////////////////////////////////////////////////////////
 // Persistence.h - Implements the persistence layer for NoSqlDb       //
-// ver 1.1                                                           //
+// ver 1.2                                                           //
 // Language:    C++, Visual Studio 2017                              //
 // Application: NoSqlDb, CSE687 - Object Oriented Design             //
 // Author:      Ritesh Nair (rgnair@syr.edu)                         //
@@ -24,6 +24,9 @@
 *
 * Maintenance History:
 * --------------------
+* ver 1.2 : 16 Apr 2018
+* - restricts Payload to be of type IPayload
+* - uses the interface's methods to serialize the payload to and from XML
 * ver 1.1 : 06 Feb 2018
 * - defined the IPersistence interface and Persistence class implements this interface
 * - made output/input serialization format extensible; this release only supports xml
@@ -148,9 +151,9 @@ namespace NoSqlDb {
                 DbElementMetadata metadata = createDbElementMetadata(pMetadata);
                 dbElem.metadata(metadata);
             }
-            else if (pValueChild->children().size() > 0)
+            else if (pValueChild->tag() == "payload")
             {
-                dbElem.payLoad(pValueChild->children()[0]->value());
+                dbElem.payLoad(T::fromXmlElement(pValueChild));
             }
         }
 
@@ -246,7 +249,7 @@ namespace NoSqlDb {
         }
 
         // the payload...
-        Sptr pPayLoad = makeTaggedElement("payload", thisElement.payLoad());
+        Sptr pPayLoad = thisElement.payLoad().toXmlElement();
         pValue->addChild(pPayLoad);
     }
 

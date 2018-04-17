@@ -2,7 +2,7 @@
 ////////////////////////////////////////////////////////////////////////
 // DbCoreTestHelper.h - Implements helper utilities which are used by //
 //                  the testing framework                             //
-// ver 1.1                                                            //
+// ver 1.2                                                            //
 // Language:    C++, Visual Studio 2017                               //
 // Application: NoSqlDb, CSE687 - Object Oriented Design              //
 // Author:      Ritesh Nair (rgnair@syr.edu)                          //
@@ -19,6 +19,8 @@
 *
 * Maintenance History:
 * --------------------
+* ver 1.2 : 16 Apr 2018
+* - switched from std::string as payload to the IPayload implementation - StringPayload
 * ver 1.1 : 15 Apr 2018
 * - Moved into DbCore package
 * - Move implementation into DbCore.cpp file
@@ -32,6 +34,7 @@
 #include "../DateTime/DateTime.h"
 #include "../Utilities/StringUtilities/StringUtilities.h"
 #include "../DbCore/DbCore.h"
+#include "../Payloads/StringPayload.h"
 
 #include <functional>
 
@@ -47,12 +50,12 @@ namespace NoSqlDbTests {
         template <typename T>
         static void showInitialDbState(NoSqlDb::DbCore<T>& db);
 
-        static void createTitanDb(NoSqlDb::DbCore<std::string>& db,
+        static void createTitanDb(NoSqlDb::DbCore<NoSqlDb::StringPayload>& db,
             bool includeRelationships = true, bool includePosiedonAndLeto = false);
 
     private:
-        static void _addChildrenInTitanDb(NoSqlDb::DbCore<std::string>& db);
-        static void _addPosiedonAndLeto(NoSqlDb::DbCore<std::string>& db);
+        static void _addChildrenInTitanDb(NoSqlDb::DbCore<NoSqlDb::StringPayload>& db);
+        static void _addPosiedonAndLeto(NoSqlDb::DbCore<NoSqlDb::StringPayload>& db);
     };
 
     //----< prints the db state during initialization of a test >----------------------

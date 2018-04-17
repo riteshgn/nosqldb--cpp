@@ -1,7 +1,7 @@
 #pragma once
 ///////////////////////////////////////////////////////////////////////
 // DbCore.h - Implements NoSql database prototype                    //
-// ver 1.4                                                           //
+// ver 1.5                                                           //
 // Language:    C++, Visual Studio 2017                              //
 // Application: NoSqlDb, CSE687 - Object Oriented Design             //
 // Author:      Ritesh Nair                                          //
@@ -32,6 +32,8 @@
 *
 * Maintenance History:
 * --------------------
+* ver 1.5 : 16 Apr 2018
+* - Fixed bug in add function
 * ver 1.4 : 15 Apr 2018
 * - Moved implementation of DbElementMetadata to DbCore.cpp file
 * ver 1.3 : 4 Feb 2018
@@ -287,7 +289,7 @@ namespace NoSqlDb
     template<typename T>
     bool DbCore<T>::add(const Pairs& keyValuePairs)
     {
-        for (std::pair<T, DbElement<T>> record : keyValuePairs)
+        for (std::pair<std::string, DbElement<T>> record : keyValuePairs)
         {
             add(record.first, record.second);
         }
