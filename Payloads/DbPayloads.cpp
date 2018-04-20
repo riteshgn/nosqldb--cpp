@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////
 // RepoPayload.cpp - Implements the persistence APIs                 //
-// ver 1.2                                                           //
+// ver 1.3                                                           //
 // Language:    C++, Visual Studio 2017                              //
 // Application: NoSqlDb, CSE687 - Object Oriented Design             //
 // Author:      Ritesh Nair (rgnair@syr.edu)                         //
@@ -9,6 +9,9 @@
 /*
 * Maintenance History:
 * --------------------
+* ver 1.3 : 19 Apr 2018
+* - payload query uses lambda for criteria definition instead of functor
+* - modified test case to support this change
 * ver 1.2 : 15 Apr 2018
 * - Added implementations for the StringPayload and RepoPayload classes
 * ver 1.1 : 15 Apr 2018
@@ -117,9 +120,14 @@ std::string RepoPayload::stringifyCategories() const
 
 // test functions
 
-class CategoryHeader : public NoSqlDb::IPayloadSearchCriteria<Repository::RepoPayload>
-{
-    virtual bool operator()(const Repository::RepoPayload& payload);
+std::function<bool(RepoPayload)> categoryHeader = [](RepoPayload payload) {
+    using Category = std::string;
+    for (Category category : payload.categories())
+    {
+        if (category == "Header")
+            return true;
+    }
+    return false;
 };
 
 //----< generates data in db for performing the test >---------------------
@@ -173,23 +181,9 @@ void _populateTestData(NoSqlDb::DbCore<Repository::RepoPayload>& db)
     db["DbCore.cpp"] = element;
 }
 
-bool CategoryHeader::operator()(const Repository::RepoPayload& payload)
-{
-    using Category = std::string;
-    for (Category category : payload.categories())
-    {
-        if (category == "Header")
-            return true;
-    }
-    return false;
-}
-
 //----< demo custom payload requirement #9 >---------------------
 bool test9::operator()()
 {
-    using namespace NoSqlDb;
-    using namespace Repository;
-
     DbCore<RepoPayload> db;
     DbTestHelper::showInitialDbState(db);
 
@@ -216,7 +210,6 @@ bool test9::operator()()
     std::cout << "\n";
 
     Query<RepoPayload> query;
-    CategoryHeader categoryHeader;
     DbCore<RepoPayload> result = query.from(db).where.payload.has(categoryHeader).end();
 
     std::cout << "\n\n  Demonstrating custom payload query: ";

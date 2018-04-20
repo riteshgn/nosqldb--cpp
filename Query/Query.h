@@ -1,7 +1,7 @@
 #pragma once
 ///////////////////////////////////////////////////////////////////////
 // Query.h - Implements the Query module for the NoSql database      //
-// ver 1.3                                                           //
+// ver 1.4                                                           //
 // Language:    C++, Visual Studio 2017                              //
 // Application: NoSqlDb, CSE687 - Object Oriented Design             //
 // Author:      Ritesh Nair (rgnair@syr.edu)                         //
@@ -21,6 +21,9 @@
 *
 * Maintenance History:
 * --------------------
+* ver 1.4 : 19 Apr 2018
+* - payload query uses lambda for criteria definition instead of functor
+* - Remove payload criteria interface
 * ver 1.3 : 10 Feb 2018
 * - added searching over payloads
 * - made querytype references constant
@@ -130,19 +133,6 @@ namespace NoSqlDb {
     };
 
     /////////////////////////////////////////////////////////////////////
-    // IPayloadSearchCriteria interface
-    // - Defines a functor interface which can be used to query the payload
-    // - The functor will get an handle of the payload object and is expected
-    //   to return true if match; else false
-
-    template <typename T>
-    class IPayloadSearchCriteria
-    {
-    public:
-        virtual bool operator()(const T& payload) = 0;
-    };
-
-    /////////////////////////////////////////////////////////////////////
     // PayloadQuery class
     // - Provides APIs to query the payload of a record in the NoSQlDb
 
@@ -152,7 +142,7 @@ namespace NoSqlDb {
     public:
         using Key = std::string;
         using Keys = std::vector<Key>;
-        using Criteria = std::reference_wrapper<IPayloadSearchCriteria<T>>;
+        using Criteria = std::function<bool(T)>;
 
         PayloadQuery(Query<T>& cursor) : cursor_(cursor) {}
 
