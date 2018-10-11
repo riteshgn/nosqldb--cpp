@@ -1,6 +1,6 @@
 # nosqldb--cpp
 
-A simplistic Key-Value database built in C++.
+A Key-Value database built in C++.
 Idea based on the project description of the Object Oriented Design course by [Prof. Jim Fawcett](https://ecs.syr.edu/faculty/fawcett/handouts/webpages/fawcettHome.htm "Prof. Jim Fawcett")
 
 ### Features
